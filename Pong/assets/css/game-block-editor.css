@@ -1,0 +1,72 @@
+.game-container{
+    background: #2c3e50;
+    width: 700px;
+    height: 500px;
+    margin: auto;
+}
+
+.bigGameContainer{
+    text-align: center;
+}
+
+
+.gameStart{
+    height: 100%;
+    width: 100%;
+    background: url('./game.PNG') center/cover;
+    color: white;
+    font-family: 'Courier New';
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gSetting{
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gSetting label
+{
+    width: 300px;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+    background: white;
+    margin: auto;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
