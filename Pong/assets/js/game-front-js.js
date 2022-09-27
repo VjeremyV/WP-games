@@ -322,11 +322,19 @@ var Game = {
 		this.context.font = '30px Courier New';
 
 		// Draw the winning score (center)
-		this.context.fillText(
-			'Meilleur score ' + getCookieValue().toString(),
-			(this.canvas.width / 2),
-			35
-		);
+		if(getCookieValue()){
+			this.context.fillText(
+				'Meilleur score ' + getCookieValue().toString(),
+				(this.canvas.width / 2),
+				35
+			);
+		} else {
+			this.context.fillText(
+				'Meilleur score 0',
+				(this.canvas.width / 2),
+				35
+			);
+		}
 
 		// Change the font size for the center score value
 		this.context.font = '40px Courier';
