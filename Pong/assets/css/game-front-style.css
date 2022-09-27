@@ -1,5 +1,28 @@
 canvas{
 width: 640px;
 height: 400px;
+}
+
+#mobileButtonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
 
 }
+
+.game-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mobileButton{
+    margin: 10px;
+    border-radius: 50%;
+    background: #00000045;
+    color: white;
+    padding: 10px 20px;
+}
+

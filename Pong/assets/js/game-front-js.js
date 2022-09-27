@@ -51,11 +51,20 @@ var Paddle = {
 	}
 };
 
+function mobilecheck() {
+    if((typeof window.orientation !== "undefined") 
+      || (navigator.userAgent.indexOf('IEMobile') !== -1
+      )){
+		let mobileButtons = document.getElementById('mobileButtonContainer');
+		mobileButtons.style.display = 'flex';
+	}
+};
 
 function setCookie(score) {
 	let currentBestScore = getCookieValue();
-	if(score > currentBestScore) {
-		document.cookie = "Best_Score_Pong="+score+";"
+	if(score > currentBestScore || currentBestScore === undefined) {
+			console.log(currentBestScore);
+			document.cookie = "Best_Score_Pong="+score+";"
 	}
 }
 
@@ -234,6 +243,7 @@ var Game = {
 		// Check to see if the paddle/AI has won the round.
 		else if (this.paddle.score === 1) {
 			setCookie(this.player.score);
+			console.log('prout');
 			this.over = true;
 			setTimeout(function () { Pong.endGameMenu(textGameover && textGameover != "" ? textGameover :'Game Over!'); }, 1000);
 		}
@@ -356,6 +366,7 @@ var Game = {
 	},
 
 	listen: function () {
+
 		document.addEventListener('keydown', function (key) {
 			key.preventDefault();
 			// Handle the 'Press any key to begin' function and start the game.
@@ -371,6 +382,32 @@ var Game = {
 			if (key.keyCode === 40 || key.keyCode === 83) Pong.player.move = DIRECTION.DOWN;
 		});
 
+		let mobileButtonUp = document.getElementById('leftButton');
+		let mobileButtonDown = document.getElementById('rightButton');
+
+		mobileButtonUp.addEventListener('mousedown', (key) => {
+			if (Pong.running === false) {
+				Pong.running = true;
+				window.requestAnimationFrame(Pong.loop);
+			}
+			Pong.player.move = DIRECTION.UP;
+		})
+		mobileButtonUp.addEventListener('mouseup', () => {
+			Pong.player.move = DIRECTION.IDLE;
+		})
+
+
+		mobileButtonDown.addEventListener('mousedown', (key) => {
+			if (Pong.running === false) {
+				Pong.running = true;
+				window.requestAnimationFrame(Pong.loop);
+			}
+			Pong.player.move = DIRECTION.DOWN;
+		})
+
+		mobileButtonDown.addEventListener('mouseup', () => {
+			Pong.player.move = DIRECTION.IDLE;
+		})
 		// Stop the player from moving when there are no keys being pressed.
 		document.addEventListener('keyup', function (key) { 
 			key.preventDefault();
@@ -401,6 +438,7 @@ var Game = {
 
 var Pong = Object.assign({}, Game);
 Pong.initialize();
+mobilecheck() 
 }
 
   };

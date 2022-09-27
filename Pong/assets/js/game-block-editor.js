@@ -164,7 +164,17 @@
           "data-textStart": props.attributes.textStart,
           "data-textGameover": props.attributes.textGameover,
           "data-colorBack": props.attributes.color,
-        }, "Votre navigateur ne permet pas l'utilisation de la balise canvas, vous ne pouvez pas lire le jeu"))
+        }, "Votre navigateur ne permet pas l'utilisation de la balise canvas, vous ne pouvez pas lire le jeu"),
+        wp.element.createElement('div', {
+          id: 'mobileButtonContainer',
+        }, wp.element.createElement('div', {
+          class: 'mobileButton',
+          id: 'leftButton'
+        }, "^"), wp.element.createElement('div', {
+          class: 'mobileButton',
+          id: 'rightButton'
+        }, "v"))
+        )
       },
     });
   })()
